@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Eren Balata</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- favicons -->
+    <link href="https://www.erenbalata.com.tr/ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+    <link href="https://www.erenbalata.com.tr/ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114">
+    <link href="https://www.erenbalata.com.tr/ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+    <link href="https://www.erenbalata.com.tr/ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon-precomposed">
+    <link href="https://www.erenbalata.com.tr/ico/favicon.png" rel="shortcut icon">
+
+    <!-- App css -->
+    <link href="https://www.erenbalata.com.tr/admin/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.erenbalata.com.tr/admin/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.erenbalata.com.tr/admin/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://www.erenbalata.com.tr/admin/js/jquery.min.js"></script>
+</head>
+<body>
+    <style>
+        .account-box {
+            position: relative;
+            max-width: 460px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+    </style>
+
+    <br />
+    <br />
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="account-box">
+                        <div class="account-logo-box">
+                            <h2 class="text-center">
+                                <a href=""><img src="https://www.erenbalata.com.tr/dosyalar/images/site/logo.svg" width="150" alt=""></a>
+                            </h2>
+                            <center> <h5>Hoş geldiniz, e-posta ve parolanız ile güvenli giriş yapabilirsiniz.</h5></center>
+                        </div>
+                        <div class="account-content">
+
+                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken();
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+
+                                        <label for="eposta">Kullanıcı Adınız</label>
+                                        <input type="text" class="form-control" placeholder="Kullanıcı Adı" name="kadi">
+                                        <br />
+                                        <label for="eposta">Şifreniz</label>
+                                        <input type="password" class="form-control" placeholder="Şifre" name="sifre">
+                                        <br />
+                                        <button type="submit" class="btn btn-primary btn-block">Oturum Aç</button>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery  -->
+    <script src="https://www.erenbalata.com.tr/admin/js/tether.min.js"></script><!-- Tether for Bootstrap -->
+    <script src="https://www.erenbalata.com.tr/admin/js/bootstrap.min.js"></script>
+    <script src="https://www.erenbalata.com.tr/admin/js/metisMenu.min.js"></script>
+    <script src="https://www.erenbalata.com.tr/admin/js/waves.js"></script>
+    <script src="https://www.erenbalata.com.tr/admin/js/jquery.slimscroll.js"></script>
+
+    <!-- App js -->
+    <script src="https://www.erenbalata.com.tr/admin/js/jquery.core.js"></script>
+</body>
+
+</html>
+

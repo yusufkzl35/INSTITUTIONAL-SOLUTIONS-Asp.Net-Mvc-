@@ -1,0 +1,337 @@
+﻿
+
+@using PagedList
+@using PagedList.Mvc
+@using Erenbook.Models
+@model IPagedList<Arizalar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_erenbook.cshtml";
+}
+
+<style>
+    input[type=checkbox] {
+        width: 30px;
+        height: 30px
+    }
+
+    .btn-success {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: auto;
+        cursor: pointer;
+    }
+
+    .table-bordered td, .table-bordered th {
+        border: 1px solid #dee2e6;
+        text-align: center;
+    }
+</style>
+
+
+
+
+<br />
+
+
+<div class="container-fluid">
+
+    <div class="row mb-2">
+        <div class="col-sm-10">
+            <h3>Mekanik Arıza Listesi</h3>
+            @*<h5><font color="#007bff">--Yazı--</font>--Yazı--</h5>*@
+        </div>
+        @Html.ActionLink("Arıza Ekle", "ekle", null, new { @class = "btn btn-success" })
+    </div>
+
+</div>
+<br />
+
+@using (Html.BeginForm("Excell3", "Arizalar", FormMethod.Post))
+{
+    <input type="submit" value="Excel" class="btn btn-success" />
+    <!-- <input type="button" onclick="printDiv('printableArea')" value="PDF" class="btn btn-danger" /> -->
+}
+<br />
+
+
+
+<div class="panel-body">
+
+    @*<p>
+            @using (Html.BeginForm("Index", "Arizalar", FormMethod.Get))
+            {
+                <input type="text" name="search" placeholder="Makine Kodu Ara" />
+                <input type="submit" name="submit" placeholder="ara" />
+
+            }
+        </p>*@
+
+    @*<div class="container-fluid">
+
+            <div class="row mb-2">
+                <div class="col-sm-10">
+
+                </div>
+                <h5><b>F 30 RVZ3 / 04.01.2022</b></h5>
+            </div>
+
+        </div>*@
+
+
+
+
+
+    @using (Html.BeginForm("index", "Arizalar"))
+    {
+        <div class="pull-right col-md-8" style="margin-top:25px;">
+
+            <div class="col-md-5">
+                <input type="text" class="form-control pull-right" placeholder="Makine Kodu Gir" name="aranan">
+            </div>
+
+            <br />
+
+
+
+            <div class="col-md-4">
+
+                <input type="submit" name="ara" value="Arama Yap" class="btn btn-primary pull-right"><br><br>
+                <a class="btn btn-primary pull-right" href="/Arizalar/Index/">Kayıtlara Dön</a>
+
+            </div>
+
+        </div>
+
+    }
+    <br />
+    <div class="row">
+
+
+        <div class="col-lg-12">
+
+            <div class="table-responsive">
+
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="bg-info">
+
+                            <th class="col-md-2" align="center">
+                                @Html.DisplayNameFor(model => model.First().MakineKodu)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().BaslangicTarihi)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().Ilk1)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().ArizaBildiren)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().ArizaMudahaleTarihi)
+                            </th>
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().MudahaleSaati)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().ArizaAciklama)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().ArizaNedeni)
+                            </th>
+
+                            <th class="center" align="center">
+                                @Html.DisplayNameFor(model => model.First().YapilanMudahale)
+                            </th>
+
+                            <th class="center">
+                                @Html.DisplayNameFor(model => model.First().MudahaleAciklama)
+                            </th>
+                            <th class="center">
+                                @Html.DisplayNameFor(model => model.First().KullanilanMalzeme)
+                            </th>
+
+                            <th class="center">
+                                @Html.DisplayNameFor(model => model.First().Malbeklemesuresi)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().BitisTarihi)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().Son1)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().BakimYapan)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().MudahaleSuresi)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().GecenSure)
+                            </th>
+
+                            <th align="center">
+                                <font color="#FFFFFF">
+                                    Güncelle
+                                </font>
+                            </th>
+                            @*<th align="center">
+            <font color="#FFFFFF">
+                Sil
+            </font>
+        </th>*@
+
+                            <th>
+                                Arıza Fotoğraf Ekle/Gör
+                            </th>
+
+                        </tr>
+                    </thead>
+
+                    @if (Model.Count() == 0)
+                    {
+                        ViewBag.Mesaj = "Kullanıcı Bulunamadı.";
+
+                    }
+
+                    else
+                    {
+
+
+                        foreach (var item in Model)
+                        {
+                <tr>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MakineKodu)
+                    </td>
+
+
+
+                    <td>
+                        @(item.BaslangicTarihi.ToString("dd/MM/yyyy"))
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ilk1)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArizaBildiren)
+                    </td>
+
+
+                    <td>
+                        @(item.ArizaMudahaleTarihi.ToString("dd/MM/yyyy"))
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MudahaleSaati)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArizaAciklama)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArizaNedeni)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YapilanMudahale)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MudahaleAciklama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KullanilanMalzeme)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Malbeklemesuresi)
+                    </td>
+                    <td>
+                        @(item.BitisTarihi.ToString("dd/MM/yyyy"))
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Son1)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BakimYapan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MudahaleSuresi)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GecenSure)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Güncelle", "Duzelt", new { id = item.id }, new { @class = "btn btn-primary btn" })
+                    </td>
+
+                    @*<td>
+            @Html.ActionLink("Sil", "sil", new { id = item.id }, new { @class = "btn btn-danger ", onclick = "return confirm('" + "* " + @item.MakineKodu + "  *  kaydı silinsin mi?')" })
+        </td>*@
+
+                    <td>
+                        @Html.ActionLink("Gözat", "resimler", new { sayfaid = item.id }, new { @class = "btn btn-warning" })
+
+                    </td>
+
+                </tr>
+                        }
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+@*<nav aria-label="...">
+        <ul class="pagedList pagination pagination-lg">
+            <li class="page-item active" aria-current="page">
+                <h4> @Html.PagedListPager(Model, i => Url.Action("Index", "Arizalar", new { i, search = Request.QueryString["search"] }))</h4>
+            </li>
+        </ul>
+    </nav>*@
+
+<nav aria-label="...">
+    <ul class="pagedList pagination pagination-lg">
+        <li class="page-item active" aria-current="page">
+            <h4>  @Html.PagedListPager(Model, sayfa => Url.Action("index", new { sayfa }), PagedListRenderOptions.Classic)</h4>
+        </li>
+    </ul>
+</nav>

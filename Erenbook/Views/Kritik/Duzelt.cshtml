@@ -1,0 +1,403 @@
+﻿
+
+@model Erenbook.Models.Kritik
+
+
+@{
+    ViewBag.Title = "Duzelt";
+    Layout = "~/Views/Shared/_erenbook.cshtml";
+}
+
+<br />
+<style>
+    input[type=checkbox] {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<style>
+    select {
+        text-align-last: center;
+        padding-right: 29px;
+    }
+
+    option {
+        text-align: center;
+    }
+</style>
+
+<div class="panel-body">
+
+    <h3>F081 KRİTİK MAKİNE - KRİTİK YEDEK PARÇA GÜNCELLE</h3>
+    <br />
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+
+
+
+                @using (Html.BeginForm("Duzelt", "Kritik", FormMethod.Post))
+                {
+                    <table border="1">
+
+                        <tr>
+                            <td height="35" colspan="2" align=center valign=middle><b>MAKİNE KODU</b></td>
+
+                            <td height="35" colspan="2" align=center valign=middle>
+                                @Html.DropDownListFor(
+                                x => x.MakineKodu,
+                                new SelectList(new List<Object>
+
+                                      {
+                                    new { value = 0 , text = "Seçiniz"},
+                                    new { value = 1 , text = "B 710"  },
+                                     new { value = 2 , text = "B 711 (B 710 AYNI)"  },
+                                      new { value = 3 , text = "B 712 (B 710 AYNI)"  },
+                                       new { value = 4 , text = "B 713"  },
+                                        new { value = 5 , text = "B 715"  },
+                                         new { value = 6 , text = "B 716"  },
+                                          new { value = 7 , text = "B 717"  },
+                                          new { value = 8 , text = "B 702"  },
+                                           new { value = 9 , text = "B 705"  },
+                                            new { value = 10 , text = "B 708"  },
+                                             new { value = 11 , text = "B 711"  },
+                                              new { value = 12 , text = "BAKIM ŞEFİ"  },
+                                               new { value = 13 , text = "BK5110"  },
+                                                new { value = 14 , text = "BM01"  },
+                                                 new { value = 15 , text = "BY01"  },
+                                                  new { value = 16 , text = "CM 03"  },
+                                                   new { value = 17 , text = "CP 07"  },
+                                                    new { value = 18 , text = "D 513"  },
+                                                     new { value = 19 , text = "D 517"  },
+                                                      new { value = 20 , text = "DP13"  },
+                                                       new { value = 21 , text = "DTM 01"  },
+                                                        new { value = 22, text = "F 407"  },
+                                                        new { value = 23, text = "FARO"  },
+                                                        new { value = 24, text = "HAZIRLAYAN"  },
+
+                                                         new { value = 25 , text = "KDM02"  },
+                                                    new { value = 26 , text = "KM 01"  },
+                                                     new { value = 27 , text = "KM 02"  },
+                                                      new { value = 28 , text = "KTM01"  },
+                                                       new { value = 29 , text = "M 110"  },
+                                                        new { value = 30, text = "M 116"  },
+                                                        new { value = 31, text = "MAKİNE KODU"  },
+                                                        new { value = 32, text = "P 21"  },
+
+                                                         new { value = 33 , text = "P08"  },
+                                                    new { value = 34 , text = "P09"  },
+                                                     new { value = 35 , text = "T 602"  },
+                                                      new { value = 36 , text = "T 617"  },
+                                                       new { value = 37 , text = "T 618"  },
+                                                        new { value = 38, text = "T 619"  },
+                                                        new { value = 39, text = "T 620"  },
+                                                        new { value = 40, text = "T 622"  },
+
+                                                        new { value = 41 , text = "T 623"  },
+                                                    new { value = 42 , text = "T 624"  },
+                                                     new { value = 43 , text = "T 625"  },
+                                                      new { value = 44 , text = "T601"  },
+                                                       new { value = 45 , text = "T619"  },
+                                                        new { value = 46, text = "TÜ 900"  },
+                                                        new { value = 47, text = "TÜ 901"  },
+                                                        new { value = 48, text = "TÜ 903"  },
+
+
+
+                                                          new { value = 49 , text = "TÜ 907"}  }, "text", "text"), new { @class = "form-control" })
+
+                            </td>
+
+                            <td height="35" colspan="2" align=center valign=middle><b>MAKİNE ADI</b></td>
+
+                            <td height="35" colspan="2" align=center valign=middle>
+                                @Html.DropDownListFor(
+                                x => x.MakineAdi,
+                                new SelectList(new List<Object>
+
+                                      {
+                                    new { value = 0 , text = "Seçiniz"},
+                                    new { value = 1 , text = "3D P-CMM"  },
+                                     new { value = 2 , text = "BALATA YIKAMA MAKİNESİ (KAMPANA)"  },
+                                      new { value = 3 , text = "CAFLAMA MAKİNESİ "  },
+                                       new { value = 4 , text = "CİLT PRESİ "  },
+                                        new { value = 5 , text = "CNC TAŞLAMA "  },
+                                         new { value = 6 , text = "ÇOKLU DELİCİ  "  },
+                                          new { value = 7 , text = "ÇOKLU KESİCİ"  },
+                                          new { value = 8 , text = "DIŞ TAŞLAMA"  },
+                                           new { value = 9 , text = "DİSK  OTOMATİK TARTIM MAKİNASI "  },
+                                            new { value = 10 , text = "DİSK PRESİ "  },
+                                             new { value = 11 , text = "ELEKTRİK ISITMALI PRES KAMPANA"  },
+                                              new { value = 12 , text = "ELEKTROSTATİK BOYA MAKİNESİ"  },
+                                               new { value = 13 , text = "FIRIN (KAMPANA)"  },
+                                                new { value = 14 , text = "İÇ TAŞLAMA"  },
+                                                 new { value = 15 , text = "İNDİKATÖR "  },
+                                                  new { value = 16 , text = "KAMPANA FİZ.ŞEK.HATTI ORTA GRUP "  },
+                                                   new { value = 17 , text = "KAMPANA FİZ.ŞEK.HATTI ORTA ve KÜÇÜK GRUP"  },
+                                                    new { value = 18 , text = "KAMPANA OTOMATİK TARTIM MAKİNASI "  },
+                                                     new { value = 19 , text = "KAMPANA PRESİ"  },
+                                                      new { value = 20 , text = "KAMPANA PRESİ - CİLT PRESİ "  },
+                                                       new { value = 21 , text = "KOMBİ DİSK MAKİNESİ "  },
+                                                        new { value = 22, text = "MATKAP "  },
+                                                        new { value = 23, text = "MİXER"  },
+                                                        new { value = 24, text = "MİXER KARIŞIM "  },
+
+                                                         new { value = 25 , text = "OTOMATİK TARTIM MAKİNASI"  },
+                                                    new { value = 26 , text = "PAH KIRMA "  },
+                                                     new { value = 27 , text = "SAC İLAÇLAMA "  },
+                                                      new { value = 28 , text = "TAŞLAMA MAKİNESİ"  },
+                                                       new { value = 29 , text = "TOZ ALMA ÜNİTESİ - DİSK"  },
+                                                        new { value = 30, text = "TOZ ALMA ÜNİTESİ - KAMPANA FİZ. ŞEK."  },
+                                                        new { value = 31, text = "TOZ ALMA ÜNİTESİ - KAMPANA TAŞLAMA"  },
+
+
+
+
+                                                          new { value = 32 , text = "TOZ ALMA ÜNİTESİ - KARIŞIM"}  }, "text", "text"), new { @class = "form-control" })
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td height="35" colspan="2" align=center valign=middle><b>KRİTİK YEDEK PARÇALAR</b></td>
+
+                            <td height="35" colspan="2" align=center valign=middle>
+                                @Html.DropDownListFor(
+                                x => x.Kyedekparca,
+                                new SelectList(new List<Object>
+
+                                      {
+                                    new { value = 0 , text = "Seçiniz"},
+                                    new { value = 1 , text = "Band"  },
+                                     new { value = 2 , text = "Bant"  },
+                                      new { value = 3 , text = "Bıçak "  },
+                                       new { value = 4 , text = "Burçlar "  },
+                                        new { value = 5 , text = "Çapır"  },
+                                         new { value = 6 , text = "Dayama Rulmanı"  },
+                                          new { value = 7 , text = "Diamond Taş"  },
+                                          new { value = 8 , text = "Dişli Kayış "  },
+                                           new { value = 9 , text = "Diyamont taş"  },
+                                            new { value = 10 , text = "Endüktif Sensör "  },
+                                             new { value = 11 , text = "Ethernet Adapter"  },
+                                              new { value = 12 , text = "Fırça "  },
+                                               new { value = 13 , text = "Hidrolik Hortum"  },
+                                                new { value = 14 , text = "Hidrolik hortum rekorları"  },
+                                                 new { value = 15 , text = "Hidrolik Hortumlar"  },
+                                                  new { value = 16 , text = "Hidrolik Pompa"  },
+                                                   new { value = 17 , text = "İtici Kol Pistonu "  },
+                                                    new { value = 18 , text = "Kapasitif Sensör "  },
+                                                     new { value = 19 , text = "Kaplin Lastiği "  },
+                                                      new { value = 20 , text = "Kayış"  },
+                                                       new { value = 21 , text = "Keçe "  },
+                                                        new { value = 22, text = "Kontrol Panel"  },
+                                                        new { value = 23, text = "Kurutma fanı"  },
+                                                        new { value = 24, text = "Manometre"  },
+
+                                                         new { value = 25 , text = "Motor Rulmanı "  },
+                                                    new { value = 26 , text = "Piston ve H Yatak"  },
+                                                     new { value = 27 , text = "Prob Ucu"  },
+                                                      new { value = 28 , text = "Rekorlar"  },
+                                                       new { value = 29 , text = "Rezistans"  },
+                                                        new { value = 30, text = "Rulman"  },
+                                                        new { value = 31, text = "Rulman (6203)"  },
+                                                        new { value = 32, text = "Sızdırmazlık eleman"  },
+
+                                                         new { value = 33 , text = "Sızdırmazlık Elemanı"  },
+                                                    new { value = 34 , text = "SSR"  },
+                                                     new { value = 35 , text = "Su devir daim pompası"  },
+                                                      new { value = 36 , text = "Sürücü"  },
+                                                       new { value = 37 , text = "Takoz  ve ek"  },
+                                                        new { value = 38, text = "Taş Rulmanı "  },
+                                                        new { value = 39, text = "Taşıycı palet"  },
+                                                        new { value = 40, text = "Taşıyıcı Bantlar"  },
+
+                                                        new { value = 41 , text = "Termokupl"  },
+                                                    new { value = 42 , text = "Toz torbası"  },
+                                                     new { value = 43 , text = "Triger Bant"  },
+                                                      new { value = 44 , text = "Valf"  },
+                                                       new { value = 45 , text = "Yastıklı Piston"  },
+
+
+
+
+                                                          new { value = 46 , text = "Zincir"}  }, "text", "text"), new { @class = "form-control" })
+
+                            </td>
+
+                            <td height="35" colspan="2" align=center valign=middle><b>PARÇA STOK KODU</b></td>
+
+                            <td height="35" colspan="2" align=center valign=middle>
+                                @Html.DropDownListFor(
+                                x => x.PStokKodu,
+                                new SelectList(new List<Object>
+
+                                      {
+                                    new { value = 0 , text = "Seçiniz"},
+                                    new { value = 1 , text = "3208"  },
+                                     new { value = 2 , text = "5211"  },
+                                      new { value = 3 , text = "6203"  },
+                                       new { value = 4 , text = "6207"  },
+                                        new { value = 5 , text = "6208"  },
+                                         new { value = 6 , text = "6210"  },
+                                          new { value = 7 , text = "6307"  },
+                                          new { value = 8 , text = "7216"  },
+                                           new { value = 9 , text = "7217"  },
+                                            new { value = 10 , text = "(BCS00NA)"  },
+                                             new { value = 11 , text = "(BES0028)"  },
+                                              new { value = 12 , text = "(BES0068)"  },
+                                               new { value = 13 , text = "10luk"  },
+                                                new { value = 14 , text = "10luk 1mt."  },
+                                                 new { value = 15 , text = "10luk-1mm "  },
+                                                  new { value = 16 , text = "10mm80mm/80"  },
+                                                   new { value = 17 , text = "1209K-TVH-C3"  },
+                                                    new { value = 18 , text = "1210K-TVH-C3"  },
+                                                     new { value = 19 , text = "1220M.C3"  },
+                                                      new { value = 20 , text = "1309K-TVH-C3"  },
+                                                       new { value = 21 , text = "13X1250mm"  },
+                                                        new { value = 22, text = "1316 EK-H316"  },
+                                                        new { value = 23, text = "13X3000mm"  },
+                                                        new { value = 24, text = " 1500 watt/numune"  },
+
+
+                                                         new { value = 25 , text = "17X1225mm"  },
+                                                    new { value = 26 , text = "17X1325mm "  },
+                                                     new { value = 27 , text = "17X825mm"  },
+                                                      new { value = 28 , text = "17X2225mm"  },
+                                                       new { value = 29 , text = "1inç"  },
+                                                        new { value = 30, text = "1NA4910-Y2"  },
+                                                        new { value = 31, text = "200X5450mm"  },
+
+                                                         new { value = 32 , text = "200X2410mm"  },
+                                                    new { value = 33 , text = "1X40 A "  },
+                                                     new { value = 34 , text = "22X1850mm"  },
+                                                      new { value = 35 , text = "20X4190mm"  },
+                                                       new { value = 36 , text = "22/1850"  },
+
+                                                        new { value = 37, text = "22X2400mm"  },
+                                                        new { value = 38, text = "22X4000mm"  },
+
+
+                                                         new { value = 39 , text = "23026-E1A-M"  },
+                                     new { value = 40 , text = "299X29X80"  },
+                                      new { value = 41 , text = "317X100X40"  },
+                                       new { value = 42 , text = "32,00X2.560,00"  },
+                                        new { value = 43 , text = "3208 FAG"  },
+                                         new { value = 44 , text = "3210 FAG"  },
+                                          new { value = 45 , text = "3429MM-H*40MM"  },
+                                          new { value = 46 , text = "360X85mm 3cm"  },
+                                           new { value = 47 , text = "3mm/6mm"  },
+                                            new { value = 48 , text = "40X8mmX280diş"  },
+                                             new { value = 49 , text = "420X450X25"  },
+                                              new { value = 50 , text = "45BER10TS "  },
+                                               new { value = 51 , text = "50 - 310 -5m"  },
+
+
+                                               new { value = 52 , text = "60x80x10"  },
+                                     new { value = 53 , text = "6217c3"  },
+                                      new { value = 54 , text = "6261 MC"  },
+                                       new { value = 55 , text = "640/8m"  },
+                                        new { value = 56 , text = "7217 FAG"  },
+                                         new { value = 57 , text = "ACS-CP-C"  },
+                                          new { value = 58 , text = "ANC 32x100 "  },
+                                          new { value = 59 , text = "ACS355-03E-01A2-4"  },
+                                           new { value = 60 , text = "DLDE"  },
+                                            new { value = 61 , text = "DMC A 32 250"  },
+                                             new { value = 62 , text = "DMC A 50 160"  },
+                                              new { value = 63 , text = "El/Kb 1XPT1-100"  },
+                                               new { value = 64 , text = "FENA-01"  },
+
+
+                                               new { value = 65 , text = "HTD8M 3824*80MM"},
+                                    new { value = 66 , text = "KPMK3V1140"  },
+                                     new { value = 67 , text = "NO Kontak"  },
+                                      new { value = 68 , text = "NU1014M1"  },
+                                       new { value = 69 , text = "NU210 e"  },
+                                        new { value = 70 , text = "NU2106"  },
+                                         new { value = 71 , text = "NU214E"  },
+                                          new { value = 72 , text = "NU2213E-6015 FAG"  },
+                                          new { value = 73, text = "numune"  },
+                                           new { value = 74 , text = "Ø110X250X40mm"  },
+                                            new { value = 75 , text = "Ø160X2400mm"  },
+                                             new { value = 76 , text = "Ø160X2950mm"  },
+                                              new { value = 77 , text = "Ø160X3600mm"  },
+                                               new { value = 78 , text = "Ø360X85mm 3cm"  },
+                                                new { value = 79 , text = "Ø18X24X25"  },
+                                                 new { value = 80 , text = "Ø26X65X180"  },
+
+
+                                                  new { value = 81 , text = "Ø4"},
+                                    new { value = 82 , text = "Ø400X130X16mm"  },
+                                     new { value = 83 , text = "Ø410X130X16mm"  },
+                                      new { value = 84 , text = "Ø360X85mmX3,5mm"  },
+                                       new { value = 85 , text = "Ø63 arka balantı"  },
+                                        new { value = 86 , text = "Ø650/690/28,5mm"  },
+                                         new { value = 87 , text = "Ø750X550X30mm"  },
+                                          new { value = 88 , text = "Ø750X550X30"  },
+                                          new { value = 89, text = "Ø95"  },
+                                           new { value = 90 , text = "P218"  },
+                                            new { value = 91 , text = "Piston-300"  },
+                                             new { value = 92 , text = "Piston-400"  },
+                                              new { value = 93 , text = "Revor"  },
+                                               new { value = 94 , text = "RDDA /LAN"  },
+                                                new { value = 95 , text = "Rezistans"  },
+                                                 new { value = 96 , text = "SPB1800LW"  },
+                                                  new { value = 97 , text = "SPL2600LYI"  },
+                                                   new { value = 98 , text = "SEKO 22C13A"  },
+
+
+
+
+                                                          new { value = 99 , text = "WAT Q2E80M2D"}  }, "text", "text"), new { @class = "form-control" })
+
+                            </td>
+
+
+                        </tr>
+
+
+
+
+                        <tr>
+                            @*<td width=400 height="35" colspan="2" align=center valign=middle><b>SİPARİŞ EDİLECEK MİKTAR</b></td>
+                                <td height="35" colspan="2" align="center" valign=middle>  @Html.TextBoxFor(x => x.SipMiktar, new { @class = "form-control" })</td>*@
+
+                            <td width=400 height="35" colspan="2" align=center valign=middle><b>KRİTİK STOK ADEDİ</b></td>
+                            <td height="35" colspan="2" align="center" valign=middle>  @Html.TextBoxFor(x => x.Adet, new { @class = "form-control" })</td>
+
+                        </tr>
+
+
+
+
+
+
+
+
+
+                    </table>
+
+                    <br />
+                    <button class="btn btn-success">Kaydet</button>
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

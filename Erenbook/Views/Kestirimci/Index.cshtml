@@ -1,0 +1,274 @@
+﻿
+@using PagedList
+@using PagedList.Mvc
+@using Erenbook.Models
+@model IPagedList<KestirimciBakim>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_erenbook.cshtml";
+}
+
+
+
+<style>
+    input[type=checkbox] {
+        width: 30px;
+        height: 30px
+    }
+
+    .btn-success {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 5px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: auto;
+        cursor: pointer;
+    }
+
+    .table td, .table th {
+        padding: 0.05rem;
+        vertical-align: middle;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .table-bordered td, .table-bordered th {
+        border: 1px solid #dee2e6;
+        text-align: center;
+    }
+</style>
+
+
+<br />
+
+<div class="container-fluid">
+
+    <div class="row mb-2">
+        <div class="col-sm-10">
+            <h3>Kestirimci Bakım Planı Ve İzleme Formu</h3>
+            <h5><font color="#007bff">Kontrol Aleti :</font>Termal Kamera</h5>
+            <h5><font color="#007bff">Plan Tarihi :</font>04.01.2022</h5>
+        </div>
+        @Html.ActionLink("Kayıt Ekle", "ekle", null, new { @class = "btn btn-success" })
+    </div>
+
+</div>
+<br />
+
+@using (Html.BeginForm("index", "Kestirimci"))
+{
+    <div class="pull-right col-md-8" style="margin-top:25px;">
+
+        <div class="col-md-5">
+            <input type="text" class="form-control pull-right" placeholder="Tezgah Kodu Veya Tezgah Adı Gir" name="aranan">
+        </div>
+
+        <br />
+
+
+
+        <div class="col-md-4">
+
+            <input type="submit" name="ara" value="Arama Yap" class="btn btn-primary pull-right"><br><br>
+            <a class="btn btn-primary pull-right" href="/Kestirimci/Index/">Kayıtlara Dön</a>
+
+        </div>
+
+    </div>
+
+}
+<br />
+
+
+<div class="accent-blue">
+        @using (Html.BeginForm("Excell1", "Kestirimci", FormMethod.Post))
+        {
+            <input type="submit" value="Excel" class="btn btn-success" />
+
+        }
+    </div>
+
+
+
+
+<br />
+
+
+
+
+
+<div class="panel-body">
+
+
+
+    <div class="container-fluid">
+
+        <div class="row mb-2">
+            <div class="col-sm-10">
+
+            </div>
+            <h5><b>F 125 RVZ.3 / 04.01.2022</b></h5>
+        </div>
+
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+
+
+                <table class="table table-bordered table-hover">
+
+                    <thead>
+
+                        <tr class="bg-info">
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().TezgahKodu)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().TezgahAdi)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().BakimTuru)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().OlcumNoktasi)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().Periyot1)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().Periyot2)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().Kodu)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().KontrolEden)
+                            </th>
+
+                            <th class="col-md-2" align="center">
+                                @Html.DisplayNameFor(model => model.First().Mudahale)
+                            </th>
+
+                            <th align="center">
+                                @Html.DisplayNameFor(model => model.First().Aciklama)
+                            </th>
+
+
+
+                            <th align="center">
+                                <font color="#FFFFFF">
+                                    Güncelle
+                                </font>
+                            </th>
+
+                            @*<th align="center">
+                                    <font color="#FFFFFF">
+                                        Sil
+                                    </font>
+                                </th>*@
+
+                        </tr>
+
+
+
+
+
+                    </thead>
+
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TezgahKodu)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TezgahAdi)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BakimTuru)
+                            </td>
+
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OlcumNoktasi)
+                            </td>
+
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Periyot1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Periyot2)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Kodu)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KontrolEden)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mudahale)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Aciklama)
+                            </td>
+
+
+
+
+                            <td>
+                                <a href="/Kestirimci/Duzelt/@item.id" class="btn btn-primary">Güncelle</a>
+                            </td>
+                            @*<td>
+                                    @Html.ActionLink("Sil", "sil", new { id = item.id }, new { @class = "btn btn-danger ", onclick = "return confirm('" + "* " + @item.TezgahAdi + " " + @item.TezgahKodu + " *  kaydı silinsin mi?')" })
+                                </td>*@
+
+
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<nav aria-label="...">
+    <ul class="pagedList pagination pagination-lg">
+        <li class="page-item active" aria-current="page">
+            <h4>  @Html.PagedListPager(Model, sayfa => Url.Action("index", new { sayfa }), PagedListRenderOptions.Classic)</h4>
+        </li>
+    </ul>
+</nav>
+
+

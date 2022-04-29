@@ -1,0 +1,324 @@
+﻿
+@model IEnumerable<Erenbook.Models.ArizaResimleri>
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="gauto | Car Rental HTML Template from Themescare">
+    <meta name="keyword" content="taxi,car,rent,hire,transport">
+    <meta name="author" content="Themescare">
+    <!-- Title -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="~/proje1/assets/img/favicon/favicon-32x32.png">
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/bootstrap.css">
+    <!--Font Awesome css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/font-awesome.min.css">
+    <!--Magnific css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/magnific-popup.css">
+    <!--Owl-Carousel css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/proje1/assets/css/owl.theme.default.min.css">
+    <!--Animate css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/animate.min.css">
+    <!--Datepicker css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/jquery.datepicker.css">
+    <!--Nice Select css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/nice-select.css">
+    <!-- Lightgallery css -->
+    <link rel="stylesheet" href="~/proje1/assets/css/lightgallery.min.css">
+    <!--ClockPicker css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/jquery-clockpicker.min.css">
+    <!--Slicknav css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/slicknav.min.css">
+    <!--Site Main Style css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/style.css">
+    <!--Responsive css-->
+    <link rel="stylesheet" href="~/proje1/assets/css/responsive.css">
+</head>
+<body>
+
+    <style>
+        input[type=checkbox] {
+            width: 20px;
+            height: 20px
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            color: white;
+            padding: 8px 11px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: auto;
+            cursor: pointer;
+        }
+
+        .btn-danger {
+            color: #fff;
+            background-color: #dc3545;
+            border-color: #dc3545;
+            padding: 8px 11px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: auto;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 8px 11px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: auto;
+            cursor: pointer;
+        }
+    </style>
+    <style type="text/css">
+        .kolon {
+            float: left;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+    <!-- Header Top Area Start -->
+    <!-- Header Top Area End -->
+    <!-- Main Header Area Start -->
+    @*<header class="gauto-main-header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="site-logo">
+                            <a href="index.html">
+                                <img src="~/proje1/assets/img/logo.svg" alt="eren" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-sm-12">
+                        <div class="header-promo">
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>*@
+    <!-- Main Header Area End -->
+    <!-- Breadcromb Area Start -->
+    @*<section class="gauto-breadcromb-area section_70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcromb-box">
+                            <h3>Arıza Resİmlerİ</h3>
+                            <ul>
+                                <li><i class="fa fa-home"></i></li>
+                                <li>
+                                    <a href="@Url.Action("Index","SiparisFisi")" class="nav-link">
+
+                                        Geri
+                                    </a>
+                                </li>
+                                <li><i class="fa fa-angle-right"></i></li>
+                                <li>@Html.ActionLink("Geri", "Index", null, new { @class = "" })</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+    <!-- Breadcromb Area End -->
+    <!-- Gallery Area Start -->
+
+
+
+
+
+    <section class="gauto-gallery-area section_70">
+
+        @*<span class="label label-default pull-left" style="padding: 5px;"><input type="checkbox" id="hepsiniSec">&nbsp;Tümünü Seç</span>*@
+
+        <div class="container">
+            <div class="kolon">
+                @Html.ActionLink("Fotoğraf/Video Ekle", "resimekle", new { sayfaid = @Request.Params["sayfaid"] }, new { @class = "btn btn-success" }) <br /><br />
+
+            </div>
+            <div class="kolon">
+                <input type="button" id="sil" value="Sil" class="btn btn-danger" />
+            </div>
+            <div class="kolon">
+                @Html.ActionLink("Geri", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+            <div style='clear: both' />
+
+            <div class="row" id="demo-gallery">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4">
+
+                        <div class="single-gallery">
+
+
+                            <div class="col-md-12  col-xs-6" id="resim-@item.id" style="padding: 10px; margin: 10px;">
+                                <input type="checkbox" class="checkBox" value="@item.id" />
+                                <div class="img-holder">
+
+                                    <img src="~/Content/ArizaResimleri/@Html.DisplayFor(modelItem => item.resimadi)" alt="Fotoğraf Harici Dosya" class="img-responsive img-thumbnail " style="height: 150px;" />
+
+                                    <div class="overlay-content">
+
+                                        <div class="inner-content">
+
+                                            <div class="title-box" id="resim-@item.id">
+
+                                                <h4><a href="~/Content/ArizaResimleri/@Html.DisplayFor(modelItem => item.resimadi)" rel="prettyPhoto"> @item.resimadi Adlı Dosyaya Tıklayınız ✓ </a></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                }
+
+
+            </div>
+
+        </div>
+
+        @*<div class="pull-right">
+                <div class="btn-toolbar">
+                    @Html.ActionLink("Geri", "Index", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>*@
+    </section>
+
+
+
+
+
+
+
+    @*<div class="pull-left">
+            <input type="button" id="sil" value="Sil" class="btn btn-danger" />
+        </div>*@
+
+
+
+
+    <script>
+    $(document).ready(function () {
+        //Tümünü Seç butonu için
+        $("#hepsiniSec").click(function () {
+            $(".checkBox").prop('checked', $(this).prop('checked'));
+            $(".checkBox").each(function () {
+                if ($(this).prop('checked')) $(this).parent("div").addClass("bg-success");
+                else
+                    $(this).parent("div").removeClass("bg-success");
+            });
+        });
+        //CheckBox seçimleri için
+        $('input:checkbox.checkBox').click(function () {
+            if ($(this).prop('checked'))
+                $(this).parent("div").addClass("bg-success");
+            else
+                $(this).parent("div").removeClass("bg-success");
+        });
+
+        //Resim Sil butonu için
+        $("#sil").click(function () {
+            var secili = new Array();
+            $('input:checkbox.checkBox').each(function () {
+                if ($(this).prop('checked')) {
+                    secili.push($(this).val());
+                }
+            });
+            if (secili.length <= 0)
+            {
+                alert("Seçili Dosya Yok!");
+            }
+            else {
+                var check = confirm("Dosyaları silmeyi onaylıyor musunuz?");
+                  if (check == true) {
+                      var options = {};
+                      options.url = '@Url.Action("resimsil", "Arizalar")';
+                      options.type = "POST";
+                      options.data = JSON.stringify(secili);
+                      options.contentType = "application/json";
+                      options.dataType = "json";
+
+                      options.success = function (msg) {
+                          alert(msg);
+                          //Seçili resimleri ekrandan silen kod
+                          $.each(secili, function (index, value) {
+                              $("#resim-" + value).remove();
+                          });
+                      };
+                      options.error = function () {
+                          alert("Silme işleminde hata oluştu!");
+                      };
+                    $.ajax(options);
+                }
+            }
+        });
+    });
+
+
+    </script>
+
+
+
+
+
+
+
+
+    <!--Jquery js-->
+    <script src="~/proje1/assets/js/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="~/proje1/assets/js/popper.min.js"></script>
+    <!--Bootstrap js-->
+    <script src="~/proje1/assets/js/bootstrap.min.js"></script>
+    <!--Owl-Carousel js-->
+    <script src="~/proje1/assets/js/owl.carousel.min.js"></script>
+    <!--Lightgallery js-->
+    <script src="~/proje1/assets/js/lightgallery-all.js"></script>
+    <script src="~/proje1/assets/js/custom_lightgallery.js"></script>
+    <!--Slicknav js-->
+    <script src="~/proje1/assets/js/jquery.slicknav.min.js"></script>
+    <!--Magnific js-->
+    <script src="~/proje1/assets/js/jquery.magnific-popup.min.js"></script>
+    <!--Nice Select js-->
+    <script src="~/proje1/assets/js/jquery.nice-select.min.js"></script>
+    <!-- Datepicker JS -->
+    <script src="~/proje1/assets/js/jquery.datepicker.min.js"></script>
+    <!--ClockPicker JS-->
+    <script src="~/proje1/assets/js/jquery-clockpicker.min.js"></script>
+    <!--Main js-->
+    <script src="~/proje1/assets/js/main.js"></script>
+</body>
+
+</html>
+

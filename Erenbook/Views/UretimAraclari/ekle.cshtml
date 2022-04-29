@@ -1,0 +1,220 @@
+﻿
+@model Erenbook.Models.UretimAraclari
+
+@{
+    ViewBag.Title = "ekle";
+    Layout = "~/Views/Shared/_erenbook.cshtml";
+}
+
+<style>
+    select {
+        text-align-last: center;
+        padding-right: 29px;
+    }
+    option {
+        text-align: center;
+    }
+
+</style>
+
+<br />
+<h2>F-30 Üretim Araçları Bakım Planı Kaydı Ekle</h2>
+
+<div id="printableArea">
+    <div class="panel-body">
+
+
+
+
+        <br />
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+
+
+
+                    @using (Html.BeginForm("ekle", "UretimAraclari", FormMethod.Post))
+                    {
+                        <br />
+                        <table border="1">
+
+                            <tr>
+
+                                <td height="35" colspan="2" align=center valign=middle><b>Makine Kodu Ve Adı</b></td>
+
+                                <td height="35" colspan="2" align=center valign=middle>
+                                    @Html.DropDownListFor(
+                                  x => x.MakineKodu,
+
+                                       new SelectList(new List<Object>
+
+                                  {
+                                  new { value = 0 , text = "Seçiniz"},
+                                
+
+
+
+                                  new { value = 197 , text = "YT 01 YÜZEY TAŞLAMA"}
+                                  }, "text", "text"), new { @class = "form-control" })
+
+                                </td>
+
+                                <td height="35" colspan="2" align=center valign=middle><b>Bakım Türü</b></td>
+                                <td height="35" colspan="2" align=center valign=middle>
+                                    @Html.DropDownListFor(
+                                  x => x.BakimTuru,
+
+                                       new SelectList(new List<Object>
+
+                                  {
+                                  new { value = 0 , text = "Seçiniz"},
+                                  new { value = 1 , text = "Planlı Bakım"  },
+
+
+                                  new { value = 2 , text = "Gerçekleşmiş Bakım"}
+                                  }, "text", "text"), new { @class = "form-control" })
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td height="35" colspan="8" align=center valign=middle><b>BAKIM DÖNEMİ</b></td>
+                            </tr>
+
+
+                            <tr>
+
+                                <td height="35" colspan="2" align=center valign=middle><b>İlk 6 Ay</b></td>
+                                <td height="35" colspan="2" align=center valign=middle>
+                                    @Html.DropDownListFor(
+                                  x => x.Ay,
+
+                                       new SelectList(new List<Object>
+
+                                  {
+                                  new { value = 0 , text = "Seçiniz"},
+                                  new { value = 1 , text = "OCAK"  },
+                                  new { value = 2 , text = "ŞUBAT"  },
+                                   new { value = 3 , text = "MART"  },
+                                    new { value = 4 , text = "NİSAN"  },
+                                     new { value = 5 , text = "MAYIS"  },
+                                  new { value = 6 , text = "HAZİRAN"}
+                                  }, "text", "text"), new { @class = "form-control" })
+
+                                </td>
+
+                                <td height="35" colspan="2" align=center valign=middle><b>Son 6 AY</b></td>
+                                <td height="35" colspan="2" align=center valign=middle>
+                                    @Html.DropDownListFor(
+                                  x => x.Ay2,
+
+                                       new SelectList(new List<Object>
+
+                                  {
+                                  new { value = 0 , text = "Seçiniz"},
+                                  new { value = 1 , text = "TEMMUZ"  },
+                                  new { value = 2 , text = "AĞUSTOS"  },
+                                   new { value = 3 , text = "EYLÜL"  },
+                                    new { value = 4 , text = "EKİM"  },
+                                     new { value = 5 , text = "KASIM"  },
+                                  new { value = 6 , text = "ARALIK"}
+                                  }, "text", "text"), new { @class = "form-control" })
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+                                <td height="35" colspan="2" align=center valign=middle> <b>Başlangıç Tarihi</b></td>
+                                <td height="35" colspan="2" align=center valign=middle> @Html.EditorFor(x => x.BaslangicTarihi, new { @class = "form-control" })</td>
+                                <td height="35" colspan="2" align=center valign=middle> <b>Başlangıç Saati</b></td>
+                                <td height="35" colspan="2" align="center" valign=middle>  @Html.TextBoxFor(x => x.Ilk1, new { @class = "form-control" })</td>
+
+                            </tr>
+                            <tr>
+                                <td height="35" colspan="2" align=center valign=middle> <b>Bitiş Tarihi</b></td>
+                                <td height="35" colspan="2" align=center valign=middle> @Html.EditorFor(x => x.BitisTarihi, new { @class = "form-control" })</td>
+                                <td height="35" colspan="2" align=center valign=middle> <b>Bitiş Saati</b></td>
+                                <td height="35" colspan="2" align="center" valign=middle>  @Html.TextBoxFor(x => x.Son1, new { @class = "form-control" })</td>
+                            </tr>
+
+
+                            <tr>
+                                <td height="35" colspan="8" align=center valign=middle><b>Müdahale Faaliyeti</b></td>
+                            </tr>
+
+                            <tr>
+
+                                <td height="35" colspan="8" align="center" valign=middle> @Html.TextAreaFor(x => x.YapilanMudahale, new { @class = "form-control" })</td>
+
+                            </tr>
+
+                            <tr>
+                                <td height="35" colspan="4" align=center valign=middle><b>Bakım Yapan</b></td>
+                                <td height="35" colspan="4" align=center valign=middle><b>Bakım Maaliyeti</b></td>
+                            </tr>
+
+
+                            <tr>
+                                <td height="35" colspan="4" align=center valign=middle>
+                                    @Html.DropDownListFor(
+                                  x => x.BakimYapan,
+
+                                       new MultiSelectList(new List<Object>
+
+                                  {
+                                  new { value = 0 , text = "Seçiniz"},
+                                  new { value = 1 , text = "Bakım Mühendisi"  },
+                                  new { value = 2 , text = "Bakım Şefi"}
+                                  }, "text", "text"), new { @class = "form-control" })
+
+                                </td>
+
+                                <td height="35" colspan="4" align="center" valign=middle>  @Html.TextBoxFor(x => x.BakimMaaliyeti, new { @class = "form-control" })</td>
+
+                            </tr>
+
+
+
+                        </table>
+
+                        <br />
+                        <button class="btn btn-success">Kaydet</button>
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+<br />
+<br />
+<br />
+<br />
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
